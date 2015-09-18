@@ -1,0 +1,47 @@
+{
+  "name": "sociare-counter",
+  "version": "0.1.0",
+  "description": "NodeJS utility for getting share counts for a given url",
+  "main": "lib/index.js",
+  "keywords": [
+    "share",
+    "social",
+    "counts",
+    "share counts",
+    "server",
+    "facebook count",
+    "twitter count",
+    "pinterest count",
+    "linkedin count",
+    "google plus count"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Globobeet/sociare-counter/blob/master/license.txt"
+    }
+  ],
+  "author": {
+    "name": "Josh Lasdin",
+    "email": "joshlasdin@globobeet.org",
+    "url": "http://joshlasdindesign.com"
+  },
+  "scripts": {
+    "transpile": "rm -rf lib/ && babel src --out-dir lib",
+    "test": "rm -rf coverage/ && babel-node node_modules/.bin/isparta cover node_modules/mocha/bin/_mocha --include src/**/*.js -- --opts test/setup/mocha.opts",
+    "prepublish": "npm run transpile"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "request-promise": "^0.4.3"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.4",
+    "isparta": "^3.0.4",
+    "mocha": "^2.3.2",
+    "sinon": "^1.16.1",
+    "sinon-chai": "^2.8.0"
+  }
+}

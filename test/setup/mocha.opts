@@ -1,0 +1,4 @@
+--compilers babel:babel/register
+-r test/setup/index
+
+test/**/*.spec.js
