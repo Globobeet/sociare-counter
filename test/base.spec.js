@@ -12,7 +12,8 @@ describe('[Services] - Base', () => {
       _request;
 
   beforeEach(() => {
-    _request = sinon.stub(request, 'get', () => Promise.resolve(JSON.stringify(data)));
+    _request = sinon.stub(request, 'get');
+    _request.returns(Promise.resolve(JSON.stringify(data)));
   });
 
   afterEach(() => {
@@ -57,6 +58,32 @@ describe('[Services] - Base', () => {
       return service.getCount(url)
         .then(count => {
           expect(count).to.equal(5);
+        });
+    });
+  });
+
+  describe('on failure', () => {
+    let error;
+
+    beforeEach(() => {
+      _request.returns(Promise.reject({ message: 'Some error' }));
+      error = sinon.stub(console, 'error');
+    });
+
+    afterEach(() => { error.restore(); });
+
+    it('should log the error', () => {
+      return service.getCount(url)
+        .then(() => {
+          expect(error).to.have.been.calledOnce;
+          expect(error).to.have.been.calledWith('Error getting count:', { message: 'Some error' });
+        });
+    });
+
+    it('should return a 0 count', () => {
+      return service.getCount(url)
+        .then(count => {
+          expect(count).to.equal(0);
         });
     });
   });

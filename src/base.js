@@ -25,6 +25,10 @@ export default class Base {
           .then(this.buildUrl)
           .then(this.sendRequest)
           .then(this.parseResponse)
-          .then(this.formatData);
+          .then(this.formatData)
+          .catch(err => {
+            console.error('Error getting count:', err, err.stack);
+            return 0;
+          });
     }
 };
