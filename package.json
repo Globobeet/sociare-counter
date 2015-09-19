@@ -29,6 +29,7 @@
   "scripts": {
     "transpile": "rm -rf lib/ && babel src --out-dir lib",
     "test": "rm -rf coverage/ && babel-node node_modules/.bin/isparta cover node_modules/mocha/bin/_mocha --include src/**/*.js -- --opts test/setup/mocha.opts",
+    "posttest": "istanbul check-coverage --statement 100 --function 100 --branch 100 --line 100",
     "prepublish": "npm run transpile"
   },
   "dependencies": {
@@ -40,6 +41,7 @@
     "chai": "^3.2.0",
     "coveralls": "^2.11.4",
     "isparta": "^3.0.4",
+    "istanbul": "^0.3.20",
     "mocha": "^2.3.2",
     "sinon": "^1.16.1",
     "sinon-chai": "^2.8.0"
