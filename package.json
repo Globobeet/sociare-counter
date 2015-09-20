@@ -1,8 +1,8 @@
 {
   "name": "sociare-counter",
   "version": "0.1.0",
-  "description": "NodeJS utility for getting share counts for a given url",
-  "main": "lib/index.js",
+  "description": "A small NodeJS utility for fetching share counts of a given URL across many popular social networks.",
+  "homepage": "https://github.com/Globobeet/sociare-counter",
   "keywords": [
     "share",
     "social",
@@ -21,11 +21,19 @@
       "url": "https://github.com/Globobeet/sociare-counter/blob/master/license.txt"
     }
   ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Globobeet/sociare-counter.git"
+  },
+  "bugs": {
+    "url" : "https://github.com/Globobeet/sociare-counter/issues"
+  },
   "author": {
     "name": "Josh Lasdin",
     "email": "joshlasdin@globobeet.org",
     "url": "http://joshlasdindesign.com"
   },
+  "main": "lib/index.js",
   "scripts": {
     "transpile": "rm -rf lib/ && babel src --out-dir lib",
     "test": "rm -rf coverage/ && babel-node node_modules/.bin/isparta cover node_modules/mocha/bin/_mocha --include src/**/*.js -- --opts test/setup/mocha.opts",
