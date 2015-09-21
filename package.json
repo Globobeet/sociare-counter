@@ -1,6 +1,6 @@
 {
   "name": "sociare-counter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small NodeJS utility for fetching share counts of a given URL across many popular social networks.",
   "homepage": "https://github.com/Globobeet/sociare-counter",
   "keywords": [
@@ -22,11 +22,11 @@
     }
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Globobeet/sociare-counter.git"
+    "type": "git",
+    "url": "https://github.com/Globobeet/sociare-counter.git"
   },
   "bugs": {
-    "url" : "https://github.com/Globobeet/sociare-counter/issues"
+    "url": "https://github.com/Globobeet/sociare-counter/issues"
   },
   "author": {
     "name": "Josh Lasdin",
