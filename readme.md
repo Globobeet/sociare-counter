@@ -24,6 +24,22 @@ sociare.getCounts('http://google.com', {
 });
 ```
 
+### ExpressJS endpoint
+
+This example is helpful if you are using the [Sociare](https://npmjs.org/package/sociare) button generator in browser:
+
+```javascript
+var sociare = require('sociare-counter'),
+	app = express();
+
+app.get('/share-counts', function (req, res) {
+	sociare.getCounts(req.query.url, {
+		networks: req.query.networks.split(','),
+		omitQuery: req.query.stripQuery
+	}).then(res.send);
+});
+```
+
 
 ## API
 
