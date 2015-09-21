@@ -1,6 +1,6 @@
 {
   "name": "sociare-counter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A small NodeJS utility for fetching share counts of a given URL across many popular social networks.",
   "homepage": "https://github.com/Globobeet/sociare-counter",
   "keywords": [
