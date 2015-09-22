@@ -9,18 +9,18 @@ describe('[Services] - GooglePlus', () => {
 
   describe('buildUrl', () => {
     it('should return the correct count url', () => {
-      expect(service.buildUrl(url)).to.equal(`https://plusone.google.com/_/+1/fastbutton?url=${encoded}&count=true`);
+      expect(service.buildUrl(url)).to.equal(`http://share.yandex.ru/gpp.xml?url=${encoded}`);
     });
   });
 
   describe('parseResponse', () => {
     describe('returns an object', () => {
-      it('should have a count from the regex match', () => {
-        expect(service.parseResponse('window.__SSR = {c: 5, count: 2}')).to.deep.equal({ count: 5 });
+      it('should have a count returned from yandex', () => {
+        expect(service.parseResponse('services.gplus.cb("5");')).to.deep.equal({ count: 5 });
       });
 
-      it('should have a count of 0 if no matches', () => {
-        expect(service.parseResponse('')).to.deep.equal({ count: 0 });
+      it('should have a count of 0 if no count provided', () => {
+        expect(service.parseResponse('services.gplus.cb("");')).to.deep.equal({ count: 0 });
       });
     });
   });
