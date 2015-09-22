@@ -1,6 +1,6 @@
 {
   "name": "sociare-counter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A small NodeJS utility for fetching share counts of a given URL across many popular social networks.",
   "homepage": "https://github.com/Globobeet/sociare-counter",
   "keywords": [
@@ -35,12 +35,13 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "transpile": "rm -rf lib/ && babel src --out-dir lib",
+    "transpile": "rm -rf lib/ && babel --optional runtime src --out-dir lib",
     "test": "rm -rf coverage/ && babel-node node_modules/.bin/isparta cover node_modules/mocha/bin/_mocha --include src/**/*.js -- --opts test/setup/mocha.opts",
     "posttest": "istanbul check-coverage --statement 100 --function 100 --branch 100 --line 100",
     "prepublish": "npm run transpile"
   },
   "dependencies": {
+    "babel-runtime": "^5.8.24",
     "bluebird": "^2.9.34",
     "request-promise": "^0.4.3"
   },
