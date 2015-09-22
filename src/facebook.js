@@ -9,6 +9,6 @@ export default class Facebook extends Base {
   }
 
   formatData (data) {
-    return data.shares;
+    return data.shares || 0;
   }
 };

@@ -17,5 +17,9 @@ describe('[Services] - Facebook', () => {
     it('should return the shares property', () => {
       expect(service.formatData({ shares: 5, count: 2 })).to.equal(5);
     });
+
+    it('should return 0 if shares is falsy', () => {
+      expect(service.formatData({})).to.equal(0);
+    });
   });
 });

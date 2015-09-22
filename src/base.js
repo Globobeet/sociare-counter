@@ -17,7 +17,7 @@ export default class Base {
     }
 
     formatData (data) {
-      return data.count;
+      return data.count || 0;
     }
 
     getCount (url) {
