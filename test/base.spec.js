@@ -63,20 +63,31 @@ describe('[Services] - Base', () => {
   });
 
   describe('on failure', () => {
-    let error;
+    let errorStub, error;
 
     beforeEach(() => {
-      _request.returns(Promise.reject({ message: 'Some error' }));
-      error = sinon.stub(console, 'error');
+      errorStub = sinon.stub(console, 'error');
+      error = { message: 'Some error' };
+      _request.returns(Promise.reject(error));
     });
 
-    afterEach(() => { error.restore(); });
+    afterEach(() => { errorStub.restore(); });
 
-    it('should log the error', () => {
+    it('should log the error stack', () => {
+      error.stack = 'Error stack';
+
       return service.getCount(url)
         .then(() => {
-          expect(error).to.have.been.calledOnce;
-          expect(error).to.have.been.calledWith('Error getting count:', { message: 'Some error' });
+          expect(errorStub).to.have.been.calledOnce;
+          expect(errorStub).to.have.been.calledWith('Error getting count:', 'Error stack');
+        });
+    });
+
+    it('should log the whole error if there is no stack trace', () => {
+      return service.getCount(url)
+        .then(() => {
+          expect(errorStub).to.have.been.calledOnce;
+          expect(errorStub).to.have.been.calledWith('Error getting count:', { message: 'Some error' });
         });
     });
 

@@ -27,7 +27,7 @@ export default class Base {
           .then(this.parseResponse)
           .then(this.formatData)
           .catch(err => {
-            console.error('Error getting count:', err, err.stack);
+            console.error('Error getting count:', err.stack || err);
             return 0;
           });
     }
