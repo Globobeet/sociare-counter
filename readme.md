@@ -33,9 +33,9 @@ var sociare = require('sociare-counter'),
 	app = express();
 
 app.get('/share-counts', function (req, res) {
-	sociare.getCounts(sociare.getCounts(req.query.url, {
+	sociare.getCounts(req.query.url, {
     networks: req.query.networks.split(','),
-    omitQuery: req.query.stripQuery === 'true'
+    omitQuery: req.query.omitQuery === 'true'
 }).then(function (counts) {
     res.send(counts);
 });
@@ -58,7 +58,7 @@ Sociare Counter has only one method: `sociare.getCounts(url, [options])`, which 
 
 ## Motivation
 
-Getting share counts from all the different social networks is... a pain, to say the least. Wouldn't it be great to have one way to get said counts, and have it always return a standard, known format? Yeah, we thought so too, which is where Sociare Counter comes into play! Simply specify the networks you want counts from and give it a url, it's easy as that! 
+Getting share counts from all the different social networks is... a pain, to say the least. Wouldn't it be great to have one way to get said counts, and have it always return a standard, known format? Yeah, we thought so too, which is where Sociare Counter comes into play! Simply specify the networks you want counts from and give it a url, it's easy as that!
 
 Sociare Counter currently supports the following networks:
 
@@ -83,4 +83,3 @@ $ npm test
 ## License
 
 Sociare Counter is distributed under the [MIT license](https://github.com/Globobeet/sociare-counter/blob/master/license.txt).
-
