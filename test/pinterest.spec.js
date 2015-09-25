@@ -9,7 +9,7 @@ describe('[Services] - Pinterest', () => {
 
   describe('buildUrl', () => {
     it('should return the correct count url', () => {
-      expect(service.buildUrl(url)).to.equal(`http://api.pinterest.com/v1/urls/count.json?callback%20&url=${encoded}`);
+      expect(service.buildUrl(url)).to.equal(`http://widgets.pinterest.com/v1/urls/count.json?url=${encoded}`);
     });
   });
 

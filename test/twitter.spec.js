@@ -9,7 +9,7 @@ describe('[Services] - Twitter', () => {
 
   describe('buildUrl', () => {
     it('should return the correct count url', () => {
-      expect(service.buildUrl(url)).to.equal(`http://cdn.api.twitter.com/1/urls/count.json?url=${encoded}`);
+      expect(service.buildUrl(url)).to.equal(`https://urls.api.twitter.com/1/urls/count.json?url=${encoded}`);
     });
   });
 });
