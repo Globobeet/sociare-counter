@@ -15,11 +15,11 @@ $ npm install --save sociare-counter
 ## Usage Example
 
 ```javascript
-var sociare = require('sociare-counter');
+const sociare = require('sociare-counter');
 
 sociare.getCounts('http://google.com', {
-	networks: ['facebook', 'twitter', 'pinterest']
-}).then(function (counts) {
+	networks: ['facebook', 'linkedin', 'pinterest']
+}).then((counts) => {
 	// Do something with the counts
 });
 ```
@@ -29,15 +29,15 @@ sociare.getCounts('http://google.com', {
 This example is helpful if you are using the [Sociare](https://npmjs.org/package/sociare) button generator in browser:
 
 ```javascript
-var sociare = require('sociare-counter'),
-	app = express();
+const sociare = require('sociare-counter');
+const app = express();
 
-app.get('/share-counts', function (req, res) {
+app.get('/share-counts', (req, res) => {
 	sociare.getCounts(req.query.url, {
-    networks: req.query.networks.split(','),
-    omitQuery: req.query.omitQuery === 'true'
-}).then(function (counts) {
-    res.send(counts);
+        networks: req.query.networks.split(','),
+        omitQuery: req.query.omitQuery === 'true'
+    })
+    .then(counts => res.send(counts));
 });
 ```
 
@@ -50,7 +50,7 @@ Sociare Counter has only one method: `sociare.getCounts(url, [options])`, which 
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| `networks` | Array[String] | 	Networks to fetch counts from. Defaults to `['facebook', 'twitter', 'pinterest', 'linkedin', 'googleplus']` |
+| `networks` | Array[String] | 	Networks to fetch counts from. Defaults to `['facebook', 'pinterest', 'linkedin', 'googleplus']` |
 | `omitQuery` | Boolean | Whether query strings should be stripped from the URL before getting counts. Defaults to `false` |
 
 
@@ -63,10 +63,13 @@ Getting share counts from all the different social networks is... a pain, to say
 Sociare Counter currently supports the following networks:
 
 * Facebook
-* Twitter
 * Pinterest
 * LinkedIn
 * Google+
+
+### Why no Twitter??
+
+In November of 2015, Twitter [shut down it's public API access to share count data](https://blog.twitter.com/2015/hard-decisions-for-a-sustainable-platform), in favor of it archiving service, GNIP. Until a suitable replacement is found (that does not require additional authentication), this plugin will not be able to return share counts from Twitter.
 
 
 ## Contributing
